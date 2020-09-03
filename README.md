@@ -127,7 +127,7 @@ Here's my example
 ```
 
 ##### 6. Naming conventions
-In order to remove the buffers while the code is touch by multiple developers we need to use naming conventions. Here are the rules
+In order to remove the buffers while the code is touched by multiple developers we need to use naming conventions. Here are the rules
 ```
 1. Vue files are capitalized:
 example: Component.vue
