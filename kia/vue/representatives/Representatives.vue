@@ -1,13 +1,36 @@
 <template>
   <div class="representative-wrap">
-    <!--<div class="loader" v-if="loading">Loading</div>-->
+    <div class="section locator row">
+      <div class="locator-menu">
+
+        <div id="locator_left-side" class="padding-none bg_lite_gray">
+
+          <div v-html="networkFilters"></div>
+
+          <div class="col-xs-12 margin-none locations" id="representatives_list_wrapper">
+
+            <div class="representatives_list list-new row" style="display:block;">
+            </div>
+            <div class="clearfix"></div>
+
+          </div>
+        </div>
+
+        <div style="_height: 981px;" id="representativesMap"></div>
+
+        <div class="clearfix"></div>
+
+      </div>
+
+    </div>
+
   </div>
 </template>
 
 <script>
 export default {
   name: 'Representatives',
-  props: ['paramData','serviceUrl', 'translationData'],
+  props: ['paramData','serviceUrl', 'translationData', 'networkFilters', 'contactData'],
   data() {
     return {
       params:null,
@@ -22,6 +45,7 @@ export default {
       testCouponList:[],
       allItems:[],
       emptyRep:[],
+      filtersBlock:null,
       defaultOptions: { lat: '46.0936711102', lng: '14.8334422197' },
       mapStyle: [
         {
@@ -718,6 +742,17 @@ export default {
       }
     },
 
+    checkUncheck() {
+      let allCheckboxes = document.querySelectorAll(".filter_box .check_low");
+      allCheckboxes.forEach(item => {
+        item.addEventListener('click', () => {
+          item.closest('.filter_box').classList.toggle('checked')
+        });
+      })
+    },
+
+
+
     toggleServiceFilters() {
 
       let filterBar = document.getElementById('filter_bar');
@@ -807,8 +842,9 @@ export default {
     alternateServiceFilters(){
       document.querySelectorAll('.toggle_service_filters').forEach(item => {
         item.addEventListener('click', (e) => {
-          this.filterVisible = !this.filterVisible;
           e.preventDefault();
+          this.checkUncheck();
+          this.filterVisible = !this.filterVisible;
           this.toggleServiceFilters();
         });
       });
@@ -1519,6 +1555,7 @@ export default {
           translations: this.translationData
         }
     );
+    this.checkUncheck();
   },
   mounted() {
 
@@ -1526,9 +1563,7 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
 
 
 
