@@ -1,27 +1,53 @@
 <template>
   <div class="representative-wrap">
+
     <div class="section locator row">
       <div class="locator-menu">
-
         <div id="locator_left-side" class="padding-none bg_lite_gray">
-
           <div v-html="networkFilters"></div>
-
           <div class="col-xs-12 margin-none locations" id="representatives_list_wrapper">
-
             <div class="representatives_list list-new row" style="display:block;">
             </div>
             <div class="clearfix"></div>
-
           </div>
         </div>
-
         <div style="_height: 981px;" id="representativesMap"></div>
-
         <div class="clearfix"></div>
-
       </div>
+    </div>
+    <div class="row item_map" id="row_item_map">
+      <div class="row">
+        <div class="col-xs-12 item_toggle_btn">
+          <div class="item_badge">
+            <div class="item_badge_num"></div>
+          </div>
+          <div class="representative_name_wrapper">
+            <span class="_item_toggle_btn_representative_name toggle_btn_representative_name"></span>
+          </div>
+          <div class="representative_arrow">
+            <img src="https://kmag.net/sharedcakephp/kia2/img/icons/icon-down-arrow.svg" alt="arrow">
+          </div>
+        </div>
+        <div class="item_toggle_wrapper">
+          <div class="col-xs-12">
+            <div class="representative_tel_address_wrapper">
+              <span class="_item_representative_tel_address representative_tel_address"></span>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 _item_representative_sales"></div>
+          <div class="col-xs-12 col-sm-6 _item_representative_service"></div>
 
+          <div class="col-xs-12">
+            <div class="representative_details_wrapper">
+              <span class="_item_representative_link_details representative_details"></span>
+            </div>
+
+            <div class="representative_link_map_wrapper">
+              <span class="_item_representative_link_map representative_link_map"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -45,7 +71,6 @@ export default {
       testCouponList:[],
       allItems:[],
       emptyRep:[],
-      filtersBlock:null,
       defaultOptions: { lat: '46.0936711102', lng: '14.8334422197' },
       mapStyle: [
         {
